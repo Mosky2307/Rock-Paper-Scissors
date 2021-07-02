@@ -5,44 +5,53 @@ let a = "rock";
 let b ="paper";
 let c = "scissors";
 let rps = [a, b, c];
-function playRound() {
+let playerWins = 0;
+let computerWins = 0;
+function playRound(playerSelection) {
     computerPlay();
     computerSelection = computerPlay();
-    if ((playerSelection.toLowerCase() === a && computerSelection === c) ||
-    (playerSelection.toLowerCase() === b && computerSelection === a) ||
-    (playerSelection.toLowerCase() === c && computerSelection === b))
-    {alert("You win!"); }  else if
-    (playerSelection.toLowerCase() === computerSelection) 
-    { alert("Draw!"); } else
-     alert("You lose!");
-};
-function game() {
-    let playerWins = 0;
+    if ((playerSelection === a && computerSelection === c) ||
+    (playerSelection === b && computerSelection === a) ||
+    (playerSelection === c && computerSelection === b))
+    { playerWins++;
+      wins.textContent = "Wins : " + (playerWins);
+      lastGame.textContent = "You Won!";
+    }  else if
+    (playerSelection === computerSelection) 
     {
-       playRound(); if ((playerSelection.toLowerCase() === a && computerSelection === c) ||
-       (playerSelection.toLowerCase() === b && computerSelection === a) ||
-       (playerSelection.toLowerCase() === c && computerSelection === b)) {
-           playerWins++
-       }
-    };
-  if (playerWins >= 3) {
-         alert("You reign supreme!")} else
-        { alert("Better luck next time!")
+      lastGame.textContent = "Draw!"; 
+    } else
+    {computerWins++;
+    losses.textContent = "Losses : " + (computerWins);
+    lastGame.textContent = "You Lost!";
     }
-}
+};
+
 
 const rockBtn = document.querySelector('#rockBtn');
 rockBtn.addEventListener('click', () => {
-    playerSelection = a;
-  playRound()
+    playRound(a) 
 });
 const paperBtn = document.querySelector('#paperBtn');
 paperBtn.addEventListener('click', () => {
-    playerSelection = b;
-  playRound()
+  playRound(b)
 });
 const scsrsBtn = document.querySelector('#scsrsBtn');
 scsrsBtn.addEventListener('click', () => {
-    playerSelection = c;
-  playRound()
+   playRound(c)
 });
+const winCount = document.querySelector('#winCount');
+const wins = document.createElement('li');
+wins.classList.add("wins");
+wins.textContent = "Wins : " + (playerWins);
+winCount.appendChild(wins);
+const losses = document.createElement('li');
+losses.classList.add("losses");
+losses.textContent = "Losses : " + (computerWins);
+winCount.appendChild(losses);
+const flexbox = document.querySelector('#flexbox');
+const lastGame = document.createElement('div');
+lastGame.classList.add("lastGame");
+lastGame.textContent = "";
+flexbox.appendChild(lastGame)
+
