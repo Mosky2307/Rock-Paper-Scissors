@@ -7,7 +7,6 @@ let c = "scissors";
 let rps = [a, b, c];
 function playRound() {
     computerPlay();
-    playerSelection = prompt("Please choose: Rock, paper or scissors?");
     computerSelection = computerPlay();
     if ((playerSelection.toLowerCase() === a && computerSelection === c) ||
     (playerSelection.toLowerCase() === b && computerSelection === a) ||
@@ -19,7 +18,7 @@ function playRound() {
 };
 function game() {
     let playerWins = 0;
-   for (let i=0; i<5; i++) {
+    {
        playRound(); if ((playerSelection.toLowerCase() === a && computerSelection === c) ||
        (playerSelection.toLowerCase() === b && computerSelection === a) ||
        (playerSelection.toLowerCase() === c && computerSelection === b)) {
@@ -31,4 +30,19 @@ function game() {
         { alert("Better luck next time!")
     }
 }
-game()
+
+const rockBtn = document.querySelector('#rockBtn');
+rockBtn.addEventListener('click', () => {
+    playerSelection = a;
+  playRound()
+});
+const paperBtn = document.querySelector('#paperBtn');
+paperBtn.addEventListener('click', () => {
+    playerSelection = b;
+  playRound()
+});
+const scsrsBtn = document.querySelector('#scsrsBtn');
+scsrsBtn.addEventListener('click', () => {
+    playerSelection = c;
+  playRound()
+});
