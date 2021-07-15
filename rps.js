@@ -1,10 +1,10 @@
 function computerPlay() {
     return rps[Math.floor(Math.random() * rps.length)];
 };
-let a = "rock";
-let b ="paper";
-let c = "scissors";
-let rps = [a, b, c];
+const a = "rock";
+const b ="paper";
+const c = "scissors";
+const rps = [a, b, c];
 let playerWins = 0;
 let computerWins = 0;
 function playRound(playerSelection) {
@@ -47,16 +47,24 @@ function playRound(playerSelection) {
 
 const rockBtn = document.querySelector('#rockBtn');
 rockBtn.addEventListener('click', () => {
-    playRound(a) 
+    playRound(a) ;
+   
+    humanLast.textContent = "You chose " + a
+    cpuLast.textContent = "CPU chose " + computerSelection
 });
 const paperBtn = document.querySelector('#paperBtn');
 paperBtn.addEventListener('click', () => {
-  playRound(b)
+  playRound(b);
+  humanLast.textContent = "You chose " + b
+    cpuLast.textContent = "CPU chose " + computerSelection
 });
 const scsrsBtn = document.querySelector('#scsrsBtn');
 scsrsBtn.addEventListener('click', () => {
-   playRound(c)
+   playRound(c);
+   humanLast.textContent = "You chose " + c
+    cpuLast.textContent = "CPU chose " + computerSelection
 });
+
 const winCount = document.querySelector('#winCount');
 const wins = document.createElement('li');
 wins.classList.add("wins");
@@ -89,8 +97,16 @@ playAgain.addEventListener('click', () => {
   document.getElementById("rockBtn").disabled = false;
       document.getElementById("paperBtn").disabled = false;
       document.getElementById("scsrsBtn").disabled = false;
+      humanLast.textContent = ""
+    cpuLast.textContent = "" 
 });
 
+const playerChoice = document.querySelector('#playerChoice');
 
+let cpuChoice = undefined
+const humanLast = document.createElement('li');
+const cpuLast = document.createElement('li');
+playerChoice.appendChild(humanLast);
+playerChoice.appendChild(cpuLast);
 
 
